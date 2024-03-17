@@ -32,7 +32,7 @@ const playGame = (userChoice) =>{
         drawGame();
         document.querySelector("#msg").innerText = "Game was draw!";
     }else{
-        const userWin = true;
+        let userWin = true;
         if(userChoice === "rock"){
             //paper, scissor
              userWin = compChoice === "paper" ? false : true;
