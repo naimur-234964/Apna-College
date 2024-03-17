@@ -1,10 +1,12 @@
 let userScore = 0;
 let compScore = 0;
 
+const msg = document.querySelector("#msg");
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#comp-score");
 const choices = document.querySelectorAll(".choice");
 
 const drawGame = ()=>{
-    console.log('Game was draw!');    
 }
 
 const genCompChoice = () =>{
@@ -13,12 +15,17 @@ const genCompChoice = () =>{
     return choices[idx];
 }
 
-const showWinner = (userWin) =>{
+const showWinner = (userWin, userChoice, compChoice) =>{
     if (userWin){
-        console.log('you win');        
+        userScore++;
+        userScorePara.innerText = userScore;
+        msg.innerText = `You Win! Your ${userChoice} beats ${compChoice}`;
+        msg.style.backgroundColor = "green"
     }else{
-        console.log('you lose');
-        
+        compScore++;
+        compScorePara.innerText = compScore;
+        msg.innerText = `You Lose! ${compChoice} beats your ${userChoice}`;
+        msg.style.backgroundColor = "red"
     }
 }
 
@@ -30,7 +37,9 @@ const playGame = (userChoice) =>{
 
     if(userChoice === compChoice){
         drawGame();
-        document.querySelector("#msg").innerText = "Game was draw!";
+        msg.innerText = `Game was draw! Your ${userChoice} and ${compChoice} are same!`;
+        msg.style.backgroundColor = "#081b31"
+        
     }else{
         let userWin = true;
         if(userChoice === "rock"){
@@ -39,11 +48,11 @@ const playGame = (userChoice) =>{
         }else if(userChoice === "paper"){
             //scissor, rock
             userWin = compChoice === "scissors" ? false : true;
-        }else{
+        }else if(userChoice === "scissors"){
             //rock, paper
             userWin = compChoice === "rock" ?  false : true;
         }
-        showWinner(userWin);
+        showWinner(userWin, userChoice, compChoice);
     }
 };
 
