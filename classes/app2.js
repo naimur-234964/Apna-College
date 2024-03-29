@@ -1,3 +1,4 @@
+// Constructor example
 class biCycle {
     constructor(brand) {
         console.log("My cycle created");
