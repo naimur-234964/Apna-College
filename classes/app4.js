@@ -4,7 +4,7 @@
 class newPerson{
     constructor(name){
         this.name = name;
-        console.log(name);
+        console.log("Name is : ", name);
     }
     eat(){
         console.log("eat");
@@ -13,6 +13,7 @@ class newPerson{
         console.log("sleep");
     }
 }
+let per = new newPerson("Naimur");
 
 class engineer extends newPerson{
     constructor(branch){
